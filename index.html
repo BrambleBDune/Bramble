@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe to HTML Generator</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; }
+    input, textarea { width: 100%; margin-bottom: 10px; padding: 8px; }
+    textarea { height: 100px; }
+    pre { background: #f4f4f4; padding: 10px; border: 1px solid #ccc; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Recipe to HTML Generator</h1>
+  
+  <label>Recipe Title:</label>
+  <input type="text" id="recipeTitle" placeholder="e.g., Chocolate Chip Cookies">
+
+  <label>Ingredients (one per line):</label>
+  <textarea id="recipeIngredients" placeholder="1 cup flour&#10;2 eggs"></textarea>
+
+  <label>Instructions (one per line):</label>
+  <textarea id="recipeSteps" placeholder="Mix ingredients&#10;Bake at 350F"></textarea>
+
+  <button onclick="generateHTML()">Generate HTML</button>
+
+  <h3>Output HTML Code:</h3>
+  <pre id="outputCode"></pre>
+
+  <script>
+    function generateHTML() {
+      const title = document.getElementById('recipeTitle').value;
+      const ingredients = document.getElementById('recipeIngredients').value
+        .split('\n').map(item => `  <li>${item}</li>`).join('\n');
+      const steps = document.getElementById('recipeSteps').value
+        .split('\n').map(step => `  <li>${step}</li>`).join('\n');
+
+      const htmlResult = `<h2>${title}</h2>\n<h3>Ingredients</h3>\n<ul>\n${ingredients}\n</ul>\n<h3>Instructions</h3>\n<ol>\n${steps}\n</ol>`;
+
+      document.getElementById('outputCode').textContent = htmlResult;
+    }
+  </script>
+
+</body>
+</html>
