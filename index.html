@@ -15,9 +15,9 @@
 
   <h1>Recipe to HTML Generator</h1>
   
- <!-- /* <label>Recipe Title:</label>
+  <label>Recipe Title:</label>
   <input type="text" id="recipeTitle" placeholder="e.g., Chocolate Chip Cookies">
-*/ -->
+
   <label>Ingredients (one per line):</label>
   <textarea id="recipeIngredients" placeholder="1 cup flour&#10;2 eggs"></textarea>
 
@@ -31,7 +31,7 @@
 
   <script>
     function generateHTML() {
-   /*   const title = document.getElementById('recipeTitle').value; */
+      const title = document.getElementById('recipeTitle').value; 
       const ingredients = document.getElementById('recipeIngredients').value
         .split('\n').map(item => `  <li>${item}</li>`).join('\n');
       const steps = document.getElementById('recipeSteps').value
